@@ -8,7 +8,7 @@
   ],
   "routes": [
     {
-      "src": "/(.*)", // Match all routes
+      "src": "/(.*)",
       "dest": "index.js"
     }
   ]
