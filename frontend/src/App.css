@@ -1,0 +1,58 @@
+body {
+  background: black;
+  color: white;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* ******** white shadow to navbar ******** */
+
+/* app.css */
+.white-shadow {
+  box-shadow: 120px 10px 300px rgba(275, 275, 275, 0.2);
+}
+
+.white-shadow1 {
+  box-shadow: 5px 10px 40px rgba(275, 275, 275, 0.2);
+}
+
+
+/* styles.css */
+/* styles.css */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-background {
+  background: linear-gradient(270deg, #2c5a40, #e2d5db);
+  background-size: 400% 400%;
+  animation: gradientAnimation 10s ease infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+
+/* ************* hero section background image responsive ********** */
+@media (max-width: 640px) {
+    .bg-custom {
+        background-size: 250%;
+    }
+}
+
+
+
+
+
+
