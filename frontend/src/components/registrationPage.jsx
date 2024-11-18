@@ -26,7 +26,7 @@ function Registration() {
         e.preventDefault(); // Prevent form from refreshing the page
 
         try {
-            const response = await fetch("http://localhost:4000/register/submitform", {
+            const response = await fetch("https://nexisparkx-com.vercel.app/register/submitform", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
