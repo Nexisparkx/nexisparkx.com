@@ -22,7 +22,7 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPosition = window.scrollY;
-
+      setIsMenuOpen(false)
       if (currentScrollPosition > lastScrollPosition && currentScrollPosition > 100) {
         // Hide navbar when scrolling down
         setIsNavbarVisible(false);
@@ -116,7 +116,8 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu */}
-        <div onScroll={}
+        <div 
+     
           className={`md:hidden transition-all w-full duration-300 ease-in-out ${
             isMenuOpen ? "max-h-96 z-30 absolute top-[66px] bg-black opacity-100 w-full left-0 " : "max-h-0 opacity-0 z-30 absolute w-full"
           } overflow-hidden`}
