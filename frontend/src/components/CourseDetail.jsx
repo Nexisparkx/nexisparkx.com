@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Card } from "./courses/cards";
 import { useNavigate } from "react-router-dom";
-
+ 
 function Home() {
   const filters = ["All", "Prompt", "Error Handling"]; // Updated filters
   const [data, setData] = useState([]);
