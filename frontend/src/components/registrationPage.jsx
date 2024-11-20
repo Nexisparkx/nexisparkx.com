@@ -146,7 +146,7 @@ function Registration() {
                                 </label>
                                 <select
                                     className="w-full p-2 rounded bg-[#1C1C1C] text-white"
-                                    id="Year"
+                                    id="year"
                                     required
                                     onChange={detailChange}
                                 >

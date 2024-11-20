@@ -11,7 +11,7 @@ const CompanyStats = () => {
     const stats = [
         { label: "Projects Completed", count: 20, icon: "📈" },
         { label: "Happy Clients", count: 15, icon: "😊" },
-        { label: "Awards Won", count: 2, icon: "🏆" },
+        { label: "Awards Won", count: 0, icon: "🏆" },
         { label: "Global Offices", count: 1, icon: "🌍" },
     ];
 
@@ -19,7 +19,7 @@ const CompanyStats = () => {
         <div className="py-16 bg-gray-900 text-white">
             {/* Section Title */}
             <h2 className="text-center text-4xl sm:text-5xl font-bold font-lora text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500 mb-10">
-                Our Achievements
+             Achievements
             </h2>
 
             {/* Stats Container */}

@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 const CompanyVision = () => {
     const sections = [
         {
-            title: 'Our Vision',
+            title: 'Vision',
             image: '/assets/images/vision.jpg',
             description:
                 'Our vision is to create a world where innovation meets sustainability. We aim to lead the industry through technology and conscious choices.',
@@ -12,7 +12,7 @@ const CompanyVision = () => {
             animationInitial: '-translate-x-20 -translate-y-10',
         },
         {
-            title: 'Our Objective',
+            title: 'Objective',
             image: '/assets/images/objective.jpg',
             description:
                 'Our objective is to consistently improve and innovate, ensuring the highest quality and value to our customers. We aim for excellence in all our ventures.',
@@ -20,7 +20,7 @@ const CompanyVision = () => {
             animationInitial: 'translate-x-20 translate-y-10',
         },
         {
-            title: 'Our Aim',
+            title: 'Aim',
             image: '/assets/images/aim.jpg',
             description:
                 'Our aim is to create lasting relationships with our clients by providing exceptional services that exceed expectations and foster trust.',
@@ -32,7 +32,7 @@ const CompanyVision = () => {
     return (
         <div className="relative py-10 min-h-screen bg-transparent text-white overflow-hidden">
             <h2 className="text-center font-lora text-4xl font-semibold mt-14 mb-8 bg-gradient-to-r from-green-500 to-teal-400 bg-clip-text text-transparent">
-                Our Vision, Objective, and Aim
+                 Vision, Objective, and Aim
             </h2>
 
             {/* Sections */}

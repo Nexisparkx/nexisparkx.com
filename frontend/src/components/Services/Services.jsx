@@ -28,7 +28,7 @@ const Services = () => {
     return (
         <section className="px-6 py-0 bg-black">
             <h2 className="text-center text-4xl mb-10 font-lora font-bold bg-gradient-to-r from-green-950 to-gray-50 bg-clip-text text-transparent">
-                Our Services
+                 Services
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                 {ServiceData.map((Service, index) => (
