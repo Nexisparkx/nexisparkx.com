@@ -1,0 +1,28 @@
+{ 
+    "data":{
+      "Error Handling": [
+        {
+          "id": "EH101",
+          "title": "Error Handling",
+          "description": "Learn how to handle errors gracefully in software applications.",
+          "image": {
+            "url": "https://tse1.mm.bing.net/th?id=OIP._cM6YPKin5nXp6xm6zq9DAHaEK&pid=Api&P=0&h=180",
+            "alt": "Error Handling Basics"
+          },
+           "videoUrl": "https://youtu.be/u2xLcx3sC_k?feature=shared"
+        }
+      ],
+      "Prompt": [
+        {
+          "id": "PR201",
+          "title": "Prompt",
+          "description": "Design effective prompts for AI models and conversational systems.",
+          "image": {
+            "url": "https://youtu.be/fdXB89WwtU0?feature=shared",
+            "alt": "Mastering Prompts"
+          }
+        }
+      ]
+    }  
+  }
+    

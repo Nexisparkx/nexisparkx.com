@@ -3,11 +3,10 @@ import './App.css';
 import './index.css'
 
 import { Route, Routes } from 'react-router-dom';
-import Course from './components/courses/courseList';
+import Course from './components/CourseDetail';
 import MainPage from './components/mainPage';
 import Registration from './components/registrationPage';
 import WorkshopFeedback from './components/feedbackform';
-import Navbar from './components/Navbar';
 import MainLayout from './MainLayout';
 
 function App() {
