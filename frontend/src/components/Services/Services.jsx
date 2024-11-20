@@ -19,9 +19,9 @@ const Services = () => {
             image: "/assets/images/ai-ml.jpg",
         },
         {
-            title: "Service 4",
-            description: "Description of Service 4",
-            image: "/assets/images/Service3.jpg",
+            title: "Problem Solving",
+            description: "Tackling practical challenges with efficient solutions",
+            image: "https://wiipa.org/wp-content/uploads/2023/03/photo_2023-03-25_22-52-06.jpg",
         },
     ];
 

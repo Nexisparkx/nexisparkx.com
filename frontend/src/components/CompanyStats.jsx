@@ -1,44 +1,60 @@
-// src/components/CompanyStats.js
-import React from 'react';
-import CountUp from 'react-countup';
-import { useInView } from 'react-intersection-observer';
+import React from "react";
+import CountUp from "react-countup";
+import { useInView } from "react-intersection-observer";
 
 const CompanyStats = () => {
     const { ref: statsRef, inView: statsInView } = useInView({
         triggerOnce: true,
-        threshold: 0.5,
+        threshold: 0.3,
     });
 
     const stats = [
-        { label: 'Work Done', count: 100, icon: '👨‍💼' },
-        { label: 'Happy Customers', count: 1922, icon: '😊' },
-        { label: 'P', count: 435, icon: '✅' },
-        { label: 'Offices Worldwide', count: 615, icon: '🌍' },
+        { label: "Projects Completed", count: 20, icon: "📈" },
+        { label: "Happy Clients", count: 15, icon: "😊" },
+        { label: "Awards Won", count: 2, icon: "🏆" },
+        { label: "Global Offices", count: 1, icon: "🌍" },
     ];
 
     return (
-        <div className="py-10 bg-transparent  text-white">
-            <h2 className="text-center font-lora text-4xl bg-gradient-to-r from-green-500 to-teal-400 font-bold bg-clip-text text-transparent mb-8">Our Assurance</h2>
+        <div className="py-16 bg-gray-900 text-white">
+            {/* Section Title */}
+            <h2 className="text-center text-4xl sm:text-5xl font-bold font-lora text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500 mb-10">
+                Our Achievements
+            </h2>
+
+            {/* Stats Container */}
             <div
                 ref={statsRef}
-                className="container  bg-transparent mx-auto flex flex-wrap justify-center gap-8 px-4"
+                className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 px-6 sm:px-12 lg:px-20"
             >
                 {stats.map((stat, index) => (
                     <div
                         key={index}
-                        className={`w-60 p-6 bg-white rounded-lg bg-transparent shadow-lg text-center transition-transform duration-700 hover:scale-110 ${statsInView ? 'transform translate-y-0 opacity-100' : 'transform translate-y-10 opacity-0'
-                            }`}
+                        className={`flex flex-col items-center justify-center bg-gray-800 rounded-xl shadow-xl p-6 text-center transform transition-transform duration-500 hover:scale-105 ${
+                            statsInView
+                                ? "opacity-100 translate-y-0"
+                                : "opacity-0 translate-y-10"
+                        }`}
                     >
-                        <div className="bg-transparent text-5xl mb-4">{stat.icon}</div>
-                        <h3 className="bg-transparent text-xl font-semibold text-green-800">
+                        {/* Icon */}
+                        <div className="text-5xl sm:text-6xl mb-4 text-blue-500">
+                            {stat.icon}
+                        </div>
+
+                        {/* Count Animation */}
+                        <h3 className="text-3xl sm:text-4xl font-bold text-white">
                             <CountUp
                                 start={0}
                                 end={statsInView ? stat.count : 0}
-                                duration={2.5}
-                                delay={0.5}
+                                duration={2}
+                                delay={0.3}
                             />
                         </h3>
-                        <p className="text-gray-700 mt-2">{stat.label}</p>
+
+                        {/* Label */}
+                        <p className="text-lg sm:text-xl text-gray-300 mt-2">
+                            {stat.label}
+                        </p>
                     </div>
                 ))}
             </div>

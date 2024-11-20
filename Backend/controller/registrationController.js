@@ -5,13 +5,17 @@ const REGISTRATION = require('../models/Registration.js');
 exports.register = async (req, res) => {
   try {
     const data = req.body; 
-    //Inside data {FirstName , lastName , section, enrollment no., number , email,domain , islaptop }; :) 
+    const registered = await REGISTRATION.findOne({email:data.email});
+    console.log(registered)
+    if(registered){
+      res.status(400).json({message:"user already registered"})
+    }else{
     const Details= await REGISTRATION.create(data);
     res.status(201).json({
       success: true,
       message: 'successfully Registerd',
       Details,
-    });
+    });}
   } catch (error) {
     res.status(500).json({
       success: false,

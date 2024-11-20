@@ -1,4 +1,4 @@
-const REGISTRATION = require('../models/Registration.js');
+const REGISTRATION = require('../models/Feedback.js');
 
 
 // Create a new Registration :)
@@ -9,7 +9,7 @@ exports.feedback = async (req, res) => {
     const Details= await REGISTRATION.create(data);
     res.status(201).json({
       success: true,
-      message: 'successfully Registerd',
+      message: 'successfully feedback added',
       Details,
     });
   } catch (error) {

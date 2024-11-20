@@ -1,6 +1,6 @@
 import Navbar from './Navbar'
 import Footer from './Footer';
-import LandingPage from './LandingPage';
+import LandingPage from './companyThought';
 import HeroSection from './HeroSection';
 import Projects from './Projects/Projects';
 import CompanyVision from './CompanyVision';
@@ -10,8 +10,7 @@ import Services from './Services/Services';
 
 function MainPage(){
     return (
-        <div>
-       
+        <div> 
         <HeroSection />
         <InspirationalQuote />
         <CompanyVision />
@@ -19,7 +18,7 @@ function MainPage(){
         <LandingPage />
         <CompanyStats />
         <Projects />
-        <Footer /> 
+      
         </div>
     )
 }

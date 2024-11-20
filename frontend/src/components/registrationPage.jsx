@@ -1,11 +1,14 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 function Registration() {
     const [details, setDetails] = useState({
         Fname: "",
         Lname: "",
         EnrollNo: "",
-        section: "CSE-3 'A'",
+        year: "I",
+        branch: "CSE",
+        section: "A",
         number: "",
         email: "",
         domain: "Web Development",
@@ -17,13 +20,23 @@ function Registration() {
         const { id, value } = e.target;
         setDetails((prevDetails) => ({
             ...prevDetails,
-            [id]: id === "vs" ? (value === "Yes") : value, // Handle boolean for laptop
+            [id]: id === "isLaptop" ? value === "Yes" : value, // Handle boolean for laptop
         }));
     }
 
     // Handle form submission
     async function submitHandler(e) {
-        e.preventDefault(); // Prevent form from refreshing the page
+        e.preventDefault(); // Prevent form refresh
+
+        const form = e.target;
+
+        // Ensure browser validation passes
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
+        console.log("Form data submitted:", details);
 
         try {
             const response = await fetch("http://localhost:4000/register/submitform", {
@@ -35,16 +48,34 @@ function Registration() {
             });
 
             const result = await response.json();
+
             if (response.ok) {
-                alert("Registration successful!");
-                console.log(result);
+                Swal.fire({
+                    icon: "success",
+                    title: "Registration Successful",
+                    text: "You have been registered successfully.",
+                    confirmButtonText: "Okay",
+                    confirmButtonColor: "#27ED64",
+                });
+             
             } else {
-                alert("Failed to register. Please try again.");
-                console.error(result);
+                Swal.fire({
+                    icon: "error",
+                    title: "Registration Failed",
+                    text: `${result.message}. Please try again.`,
+                    confirmButtonText: "Retry",
+                    confirmButtonColor: "#FF5733",
+                });
+               
             }
         } catch (error) {
-            console.error("Error during registration:", error);
-            alert("An error occurred. Please try again later.");
+            Swal.fire({
+                icon: "error",
+                title: "An Error Occurred",
+                text: `${error.message}`,
+                confirmButtonText: "Close",
+                confirmButtonColor: "#FF5733",
+            });
         }
     }
 
@@ -57,46 +88,48 @@ function Registration() {
             <div className="flex flex-col min-h-screen justify-between bg-[#0A0A0A]">
                 <div className="flex-grow flex items-center justify-center p-5">
                     <form
-                        className="w-full sm:w-[50%] border-2 shadow-xl shadow-[#222222] border-[#222222] bg-[#111111] rounded-lg p-5"
+                        className="w-full sm:w-[90%] md:w-[70%] lg:w-[50%] border-2 shadow-xl shadow-[#222222] border-[#222222] bg-[#111111] rounded-lg p-5"
                         onSubmit={submitHandler}
+                        noValidate
                     >
-                        <div className="flex flex-col space-y-4">
-                            <div className="flex flex-col sm:grid sm:grid-cols-2 sm:gap-4">
-                                <div className="flex flex-col">
-                                    <label htmlFor="Fname" className="text-[#27ED64]">
-                                        First Name
-                                    </label>
-                                    <input
-                                        className="p-2 rounded bg-[#1C1C1C]"
-                                        type="text"
-                                        placeholder="First name"
-                                        id="Fname"
-                                        required
-                                        onChange={detailChange}
-                                    />
-                                </div>
-
-                                <div className="flex flex-col">
-                                    <label htmlFor="Lname" className="text-[#27ED64]">
-                                        Last Name
-                                    </label>
-                                    <input
-                                        className="p-2 rounded bg-[#1C1C1C]"
-                                        type="text"
-                                        placeholder="Last name"
-                                        id="Lname"
-                                        required
-                                        onChange={detailChange}
-                                    />
-                                </div>
+                        <div className="grid gap-4 md:grid-cols-2">
+                            {/* First Name */}
+                            <div>
+                                <label htmlFor="Fname" className="text-[#27ED64]">
+                                    First Name
+                                </label>
+                                <input
+                                    className="w-full p-2 rounded bg-[#1C1C1C] text-white"
+                                    type="text"
+                                    placeholder="First name"
+                                    id="Fname"
+                                    required
+                                    onChange={detailChange}
+                                />
                             </div>
 
-                            <div className="flex flex-col">
+                            {/* Last Name */}
+                            <div>
+                                <label htmlFor="Lname" className="text-[#27ED64]">
+                                    Last Name
+                                </label>
+                                <input
+                                    className="w-full p-2 rounded bg-[#1C1C1C] text-white"
+                                    type="text"
+                                    placeholder="Last name"
+                                    id="Lname"
+                                    required
+                                    onChange={detailChange}
+                                />
+                            </div>
+
+                            {/* Enrollment Number */}
+                            <div className="col-span-2">
                                 <label htmlFor="EnrollNo" className="text-[#27ED64]">
                                     Enrollment No.
                                 </label>
                                 <input
-                                    className="p-2 rounded bg-[#1C1C1C]"
+                                    className="w-full p-2 rounded bg-[#1C1C1C] text-white"
                                     type="text"
                                     id="EnrollNo"
                                     placeholder="Enrollment No."
@@ -105,42 +138,81 @@ function Registration() {
                                 />
                             </div>
 
-                            <div className="flex flex-col">
-                                <label htmlFor="section" className="text-[#27ED64]">
-                                    Choose Section
+                            {/* Year */}
+                            <div>
+                                <label htmlFor="Year" className="text-[#27ED64]">
+                                    Year
                                 </label>
                                 <select
-                                    className="p-2 rounded bg-[#1C1C1C]"
+                                    className="w-full p-2 rounded bg-[#1C1C1C] text-white"
+                                    id="Year"
+                                    required
+                                    onChange={detailChange}
+                                >
+                                    <option value="I">I</option>
+                                    <option value="II">II</option>
+                                    <option value="III">III</option>
+                                </select>
+                            </div>
+
+                            {/* Branch */}
+                            <div>
+                                <label htmlFor="branch" className="text-[#27ED64]">
+                                    Branch
+                                </label>
+                                <select
+                                    className="w-full p-2 rounded bg-[#1C1C1C] text-white"
+                                    id="branch"
+                                    required
+                                    onChange={detailChange}
+                                >
+                                    <option value="CSE">CSE</option>
+                                    <option value="AI-DS">AI-DS</option>
+                                    <option value="Others">Others</option>
+                                </select>
+                            </div>
+
+                            {/* Section */}
+                            <div>
+                                <label htmlFor="section" className="text-[#27ED64]">
+                                    Section
+                                </label>
+                                <select
+                                    className="w-full p-2 rounded bg-[#1C1C1C] text-white"
                                     id="section"
                                     required
                                     onChange={detailChange}
                                 >
-                                    <option value="CSE-3 'A'" selected>CSE-3 'A'</option>
-                                    <option value="CSE-3 'B'">CSE-3 'B'</option>
-                                    <option value="CSE-3 'C'">CSE-3 'C'</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
                                 </select>
                             </div>
 
-                            <div className="flex flex-col">
+                            {/* WhatsApp Number */}
+                            <div className="col-span-2">
                                 <label htmlFor="number" className="text-[#27ED64]">
                                     WhatsApp No.
                                 </label>
                                 <input
-                                    className="p-2 rounded bg-[#1C1C1C]"
+                                    className="w-full p-2 rounded bg-[#1C1C1C] text-white"
                                     type="text"
                                     id="number"
                                     placeholder="Number"
                                     required
+                                    minLength={10}
+                                    maxLength={10}
                                     onChange={detailChange}
                                 />
                             </div>
 
-                            <div className="flex flex-col">
+                            {/* Email */}
+                            <div className="col-span-2">
                                 <label htmlFor="email" className="text-[#27ED64]">
                                     Email
                                 </label>
                                 <input
-                                    className="p-2 rounded bg-[#1C1C1C]"
+                                    className="w-full p-2 rounded bg-[#1C1C1C] text-white"
                                     type="email"
                                     id="email"
                                     placeholder="Email"
@@ -149,12 +221,13 @@ function Registration() {
                                 />
                             </div>
 
-                            <div className="flex flex-col" selected>
+                            {/* Domain */}
+                            <div className="col-span-2">
                                 <label htmlFor="domain" className="text-[#27ED64]">
                                     Interested Domain
                                 </label>
                                 <select
-                                    className="p-2 rounded bg-[#1C1C1C]"
+                                    className="w-full p-2 rounded bg-[#1C1C1C] text-white"
                                     id="domain"
                                     required
                                     onChange={detailChange}
@@ -166,25 +239,27 @@ function Registration() {
                                 </select>
                             </div>
 
-                            <div className="flex flex-col">
-                                <label htmlFor="vs" className="text-[#27ED64]">
+                            {/* Laptop */}
+                            <div className="col-span-2">
+                                <label htmlFor="isLaptop" className="text-[#27ED64]">
                                     Laptop
                                 </label>
                                 <select
-                                    className="p-2 rounded bg-[#1C1C1C]"
-                                    id="vs"
+                                    className="w-full p-2 rounded bg-[#1C1C1C] text-white"
+                                    id="isLaptop"
                                     required
                                     onChange={detailChange}
                                 >
-                                    <option value="Yes">Yes</option>
                                     <option value="No">No</option>
+                                    <option value="Yes">Yes</option>
                                 </select>
                             </div>
 
-                            <div className="flex flex-col mt-4 animate-pulse">
+                            {/* Submit Button */}
+                            <div className="col-span-2 mt-4">
                                 <button
                                     type="submit"
-                                    className="bg-[#27ED64] text-white py-2 rounded-lg hover:bg-[#2dff81]"
+                                    className="w-full bg-[#27ED64] text-white py-2 rounded-lg hover:bg-[#2dff81] animate-pulse"
                                 >
                                     Submit
                                 </button>
@@ -192,12 +267,6 @@ function Registration() {
                         </div>
                     </form>
                 </div>
-
-                <footer className="text-[#27ED64] p-4 text-center">
-                    <p>© 2024 Registration Inc. | All Rights Reserved</p>
-                    <p>Contact: nexisparkx@gmail.com | Phone: +91 8989266180</p>
-                    <p>Reg. No: 12345</p>
-                </footer>
             </div>
         </>
     );
