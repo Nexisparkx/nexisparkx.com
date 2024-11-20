@@ -45,7 +45,7 @@ function Registration() {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(details),
-            });
+            }); 
 
             const result = await response.json();
 
