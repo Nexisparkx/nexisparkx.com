@@ -21,7 +21,7 @@ function WorkshopFeedback() {
 
     // WhatsApp number validation
     if (!isValidWhatsAppNumber(number)) {
-      setError("Please enter a valid 10-digit WhatsApp number starting with 6, 7, 8, or 9.");
+      setError("Please enter a valid 10-digit WhatsApp number ");
       return;
     }
 
@@ -165,6 +165,7 @@ function WorkshopFeedback() {
                 value={number}
                 onChange={(e) => setNumber(e.target.value)}
                 placeholder="WhatsApp Number"
+            
               />
               {/* Show error message if validation fails */}
               {error && <p className="text-red-500 text-sm mt-1">{error}</p>}

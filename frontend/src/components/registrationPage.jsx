@@ -27,6 +27,7 @@ function Registration() {
     // Handle form submission
     async function submitHandler(e) {
         e.preventDefault(); // Prevent form refresh
+        
 
         const form = e.target;
 
@@ -191,20 +192,22 @@ function Registration() {
 
                             {/* WhatsApp Number */}
                             <div className="col-span-2">
-                                <label htmlFor="number" className="text-[#27ED64]">
-                                    WhatsApp No.
-                                </label>
-                                <input
-                                    className="w-full p-2 rounded bg-[#1C1C1C] text-white"
-                                    type="text"
-                                    id="number"
-                                    placeholder="Number"
-                                    required
-                                    minLength={10}
-                                    maxLength={10}
-                                    onChange={detailChange}
-                                />
-                            </div>
+    <label htmlFor="number" className="text-[#27ED64]">
+        WhatsApp No.
+    </label>
+    <input
+        className="w-full p-2 rounded bg-[#1C1C1C] text-white"
+        type="text"  // Change from number to text
+        id="number"
+        placeholder="Number"
+        required
+        pattern="^[6-9]\d{9}$"  // Regex to enforce 10 digits starting with 6-9
+        title="Please enter a valid 10-digit WhatsApp number"
+        maxLength={10}
+        onChange={detailChange}
+    />
+</div>
+
 
                             {/* Email */}
                             <div className="col-span-2">
@@ -250,19 +253,20 @@ function Registration() {
                                     required
                                     onChange={detailChange}
                                 >
-                                    <option value="No">No</option>
+                                    <option className="" value="No">No</option>
                                     <option value="Yes">Yes</option>
                                 </select>
                             </div>
 
                             {/* Submit Button */}
-                            <div className="col-span-2 mt-4">
+                            <div className="col-span-2 mt-4 mx-auto" >
                                 <button
                                     type="submit"
-                                    className="w-full bg-[#27ED64] text-white py-2 rounded-lg hover:bg-[#2dff81] animate-pulse"
+                                    className="w-max p-14 bg-[#27ED64] text-white py-2 rounded-lg hover:bg-[#2dff81] animate-pulse"
                                 >
                                     Submit
                                 </button>
+                            
                             </div>
                         </div>
                     </form>
