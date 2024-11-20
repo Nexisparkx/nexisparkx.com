@@ -39,7 +39,7 @@ function WorkshopFeedback() {
     };
 
     try {
-      const response = await fetch("http://localhost:4000/feedback/submitfeedback", {
+      const response = await fetch("https://nexisparkx-com.vercel.app/feedback/submitfeedback", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

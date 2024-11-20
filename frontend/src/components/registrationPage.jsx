@@ -39,7 +39,7 @@ function Registration() {
         console.log("Form data submitted:", details);
 
         try {
-            const response = await fetch("http://localhost:4000/register/submitform", {
+            const response = await fetch("https://nexisparkx-com.vercel.app/register/submitform", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
