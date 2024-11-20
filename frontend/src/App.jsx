@@ -8,6 +8,7 @@ import MainPage from './components/mainPage';
 import Registration from './components/registrationPage';
 import WorkshopFeedback from './components/feedbackform';
 import MainLayout from './MainLayout';
+import Aifirst from './components/AiSection';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/courses" element={<Course></Course>} />
         <Route path="/registration" element = {<Registration />} />
         <Route path="/feedback" element = {<WorkshopFeedback />} />
+        <Route path="/Ai" element = {<Aifirst/>} />
         </Route>
      
       </Routes>
